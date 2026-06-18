@@ -279,6 +279,12 @@ main {
   margin-top: 10px;
 }
 
+.food-price {
+  color: var(--pink);
+  font-size: 15px;
+  font-weight: 900;
+}
+
 .food-note {
   color: var(--muted);
   font-size: 10px;
@@ -421,7 +427,7 @@ main {
 
 .selected-row {
   display: grid;
-  grid-template-columns: 42px 1fr 34px;
+  grid-template-columns: 42px 1fr auto 34px;
   align-items: center;
   gap: 10px;
   padding: 8px;
@@ -438,6 +444,29 @@ main {
 }
 
 .selected-row strong { font-size: 13px; }
+
+.selected-price {
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.price-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 12px;
+  padding: 11px 13px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--yellow);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.price-total strong {
+  font-size: 20px;
+}
 
 .remove-selected {
   width: 30px;
