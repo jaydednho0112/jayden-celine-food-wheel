@@ -194,6 +194,37 @@ button {
   font-weight: 800;
 }
 
+.photo-menu-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 22px auto 0;
+  padding: 13px 15px;
+  border: var(--border);
+  border-radius: 16px;
+  color: var(--ink);
+  background: var(--yellow);
+  box-shadow: 4px 5px 0 var(--ink);
+  text-align: left;
+  text-decoration: none;
+  transform: rotate(.6deg);
+}
+
+.photo-menu-link > span {
+  font-size: 24px;
+}
+
+.photo-menu-link strong {
+  font-size: 14px;
+}
+
+.photo-menu-link small {
+  font-size: 10px;
+  font-weight: 900;
+}
+
 .filter-card,
 .result-card {
   position: relative;
