@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ff5d8f">
+  <meta name="description" content="JAYDEN × CELINE 看图选择马来西亚美食">
+  <title>看图选美食 · JAYDEN × CELINE</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <header class="menu-header">
+    <a class="back-link" href="index.html" aria-label="返回转盘">←</a>
+    <div>
+      <span class="mini-label">JAYDEN × CELINE</span>
+      <h1>看图选美食</h1>
+      <p>眼睛说想吃，嘴巴就别再说随便。</p>
+    </div>
+    <button id="favorites-toggle" class="header-icon" type="button" aria-label="只看收藏">♡</button>
+  </header>
+
+  <main>
+    <section class="search-panel">
+      <label class="search-box">
+        <span>⌕</span>
+        <input id="search-input" type="search" placeholder="搜索：奶茶、火锅、Nasi Lemak…" autocomplete="off">
+        <button id="clear-search" type="button" aria-label="清除搜索" hidden>×</button>
+      </label>
+      <div id="category-tabs" class="category-tabs" aria-label="菜单分类"></div>
+    </section>
+
+    <section class="menu-content">
+      <div class="menu-title-row">
+        <div>
+          <span id="active-emoji" class="active-emoji">✨</span>
+          <h2 id="active-title">全部菜单</h2>
+        </div>
+        <span id="result-count" class="result-count"></span>
+      </div>
+      <div id="food-grid" class="food-grid"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span>🥲</span>
+        <h3>没有找到这个</h3>
+        <p>换个关键词，或叫 JAYDEN 想办法。</p>
+      </div>
+    </section>
+  </main>
+
+  <aside id="selection-bar" class="selection-bar" aria-live="polite">
+    <button id="selection-summary" class="selection-summary" type="button">
+      <span class="bag-icon">🛍️</span>
+      <span><strong id="selection-count">0</strong> 个想吃</span>
+      <span id="selection-names">还没选，快点菜</span>
+    </button>
+    <button id="decide-button" class="decide-button" type="button" disabled>就这些！</button>
+  </aside>
+
+  <dialog id="selection-dialog" class="selection-dialog">
+    <form method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <span>今晚候选清单</span>
+          <h2>我们想吃这些</h2>
+        </div>
+        <button class="close-dialog" value="cancel" aria-label="关闭">×</button>
+      </div>
+      <div id="selected-list" class="selected-list"></div>
+      <p id="dialog-joke" class="dialog-joke"></p>
+      <div class="dialog-actions">
+        <button id="clear-selection" class="clear-selection" type="button">全部清空</button>
+        <button class="done-selection" value="cancel">继续看看</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="menu.js"></script>
+</body>
+</html>
