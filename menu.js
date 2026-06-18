@@ -103,10 +103,12 @@ const elements = {
   selectionBar: document.querySelector("#selection-bar"),
   selectionSummary: document.querySelector("#selection-summary"),
   selectionCount: document.querySelector("#selection-count"),
+  selectionTotal: document.querySelector("#selection-total"),
   selectionNames: document.querySelector("#selection-names"),
   decide: document.querySelector("#decide-button"),
   dialog: document.querySelector("#selection-dialog"),
   selectedList: document.querySelector("#selected-list"),
+  dialogTotal: document.querySelector("#dialog-total"),
   clearSelection: document.querySelector("#clear-selection"),
   joke: document.querySelector("#dialog-joke"),
   toast: document.querySelector("#toast")
@@ -170,7 +172,10 @@ function render() {
         <span class="food-category">${item.category}</span>
         <h3>${item.emoji} ${item.name}</h3>
         <div class="food-bottom">
-          <span class="food-note">${item.note}</span>
+          <div>
+            <span class="food-note">${item.note}</span>
+            <div class="food-price">RM1</div>
+          </div>
           <button class="add-button${selected.has(item.id) ? " selected" : ""}" type="button"
             aria-label="选择 ${item.name}">${selected.has(item.id) ? "✓" : "+"}</button>
         </div>
@@ -198,6 +203,7 @@ function toggleSelected(item) {
 function updateSelectionBar() {
   const chosen = FOOD_MENU.filter((item) => selected.has(item.id));
   elements.selectionCount.textContent = chosen.length;
+  elements.selectionTotal.textContent = `RM${chosen.length}`;
   elements.selectionNames.textContent = chosen.length ? chosen.map((item) => item.name).join("、") : "还没选，快点菜";
   elements.decide.disabled = chosen.length === 0;
 }
@@ -211,6 +217,7 @@ function openSelection() {
     row.innerHTML = `
       <img src="${IMAGE_URLS[item.imageType]}" alt="" onerror="this.style.visibility='hidden'">
       <strong>${item.emoji} ${item.name}</strong>
+      <span class="selected-price">RM1</span>
       <button class="remove-selected" type="button" aria-label="移除 ${item.name}">×</button>`;
     row.querySelector("button").addEventListener("click", () => {
       selected.delete(item.id);
@@ -219,6 +226,7 @@ function openSelection() {
     });
     elements.selectedList.appendChild(row);
   });
+  elements.dialogTotal.textContent = `RM${chosen.length}`;
   elements.joke.textContent = chosen.length > 4
     ? "选得很好，下一个问题：我们的胃真的装得下吗？"
     : chosen.length > 1 ? "很好，至少已经从“随便”进化到“这几个都想吃”。" : "目标明确，立刻出发。";
